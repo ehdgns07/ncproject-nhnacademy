@@ -27,7 +27,7 @@ public class NcServer {
                     client.start();
                     sender.start();
                 } catch (IOException e) {
-                    // TODO 클라이언트 접속 실패
+
                 }
             }
         }
@@ -46,7 +46,6 @@ public class NcServer {
         log.info(message);
 
     }
-
 
     class ClientSession extends Thread {
 
@@ -79,7 +78,7 @@ public class NcServer {
                     receiveMessage(in.readUTF());
                 }
             } catch (IOException cause) {
-                // TODO: 채팅 중 연결이 끊기는 경우
+
             } finally {
                 disconnect();
             }
@@ -93,36 +92,6 @@ public class NcServer {
             leaveChat(this);
         }
 
-
     }
 
-    private static class Sender extends Thread {
-
-        private DataOutputStream out;
-
-        private Sender(Socket socket) throws IOException {
-            this.out = new DataOutputStream(socket.getOutputStream());
-        }
-
-        @Override
-        public void run() {
-            try {
-                sendMessage();
-            } catch (IOException e) {
-                // TODO
-            }
-        }
-
-        private boolean isSendable() {
-            return this.out != null;
-        }
-
-        private void sendMessage() throws IOException {
-            try (Scanner scanner = new Scanner(System.in)) {
-                while (isSendable()) {
-                    this.out.writeUTF(scanner.nextLine());
-                }
-            }
-        }
-    }
 }

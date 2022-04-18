@@ -28,36 +28,6 @@ public class NcClient extends Thread{
         }
     }
 
-    private static class Sender extends Thread {
-
-        private DataOutputStream out;
-
-        private Sender(Socket socket) throws IOException {
-            this.out = new DataOutputStream(socket.getOutputStream());
-        }
-
-        @Override
-        public void run() {
-            try {
-                sendMessage();
-            } catch (IOException e) {
-                // TODO
-            }
-        }
-
-        private boolean isSendable() {
-            return this.out != null;
-        }
-
-        private void sendMessage() throws IOException {
-            try (Scanner scanner = new Scanner(System.in)) {
-                while (isSendable()) {
-                    this.out.writeUTF(scanner.nextLine());
-                }
-            }
-        }
-    }
-
     private static class Receiver extends Thread {
         private final DataInputStream in;
 
@@ -80,7 +50,7 @@ public class NcClient extends Thread{
             try {
                 log.info(in.readUTF());
             } catch (IOException e) {
-                // TODO
+
             }
         }
     }
