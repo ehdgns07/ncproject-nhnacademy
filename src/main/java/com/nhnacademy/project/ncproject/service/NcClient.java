@@ -1,6 +1,5 @@
-package com.academy.project.ncproject.service;
+package com.nhnacademy.project.ncproject.service;
 
-import com.nhnacademy.project.ncproject.service.NcServer;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;

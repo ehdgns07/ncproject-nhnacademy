@@ -1,6 +1,6 @@
 package com.nhnacademy.project.ncproject;
 
-import com.academy.project.ncproject.service.NcClient;
+import com.nhnacademy.project.ncproject.service.NcClient;
 import com.nhnacademy.project.ncproject.service.NcServer;
 import java.io.IOException;
 import java.util.Objects;
@@ -29,7 +29,6 @@ public class MainClass {
             } else {
                 client.connect(args[0], Integer.parseInt(args[1]));
             }
-
 
         }
 

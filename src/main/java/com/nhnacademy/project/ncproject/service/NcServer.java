@@ -1,6 +1,5 @@
 package com.nhnacademy.project.ncproject.service;
 
-import com.academy.project.ncproject.service.NcClient;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -50,13 +49,13 @@ public class NcServer {
 
 
     class ClientSession extends Thread {
-        private final Socket socket;
+
         private final DataInputStream in;
         private final DataOutputStream out;
         private int id=0;
 
         ClientSession(Socket socket) throws IOException {
-            this.socket = socket;
+
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream());
         }
